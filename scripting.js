@@ -107,9 +107,13 @@ window.addEventListener(
         
         setInterval(() => {
             // Clarity above 50%;
+            let f = c => {
+                let s = scoreColor(c)
+                return s[1] > 0.5 && s[2] < 1;
+            }
 
-            leftCol = generateLimitedColor(c => scoreColor(c)[1] > 0.5);
-            rightCol = generateLimitedColor(c => scoreColor(c)[1] > 0.5);
+            leftCol = generateLimitedColor(f);
+            rightCol = generateLimitedColor(f);
             updColors();
         }, 1000)
     }, "window load listener")
