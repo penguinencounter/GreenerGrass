@@ -1,4 +1,15 @@
-window.addEventListener("load", () => {
+function wrapErrorAlert(fn, name) {
+    return function(...args) {
+        try {
+            fn(...args)
+        }
+        catch (e) {
+            alert(`Error!\n${e}\ncalled with ${args}\n${name==undefined?"No specified name":"Name: " + name}`)
+        }
+    }
+}
+
+window.addEventListener("load", wrapErrorAlert(() => {
     const left = document.querySelector(".left");
     const right = document.querySelector(".right");
     const container = document.querySelector("body");
@@ -42,4 +53,4 @@ window.addEventListener("load", () => {
 
     left.style.backgroundColor = generateColorString(leftCol);
     right.style.backgroundColor = generateColorString(rightCol);
-})
+}))
