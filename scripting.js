@@ -63,8 +63,8 @@ function filterClarity(target_min, target_max) {
     target_min = clamp(target_min, 0, 1);
     target_max = clamp(target_max, 0, 1);
     
-    let minG = Math.min(target_min * 4, 1) * 255;
-    let maxG = Math.min(target_max * 4, 1) * 255;
+    let minG = Math.min(target_min / 4, 1) * 255;
+    let maxG = Math.min(target_max / 4, 1) * 255;
     return {
         filter: "clarity",
         min: minG,
