@@ -228,7 +228,7 @@ window.addEventListener(
         setInterval(() => {
             // Clarity above 50%;
             let f = [
-                filterClarity(0, 0.999),
+                filterClarity(0, 0.9),
                 filterPurity(0.5, 1)
             ]
 
