@@ -63,6 +63,15 @@ window.addEventListener(
             const b = Math.floor(Math.random() * 256);
             return [r, g, b];
         }
+
+        function generateLimitedColor(pred) {
+            let c = generateRandomColor();
+            while (!pred(c)) {
+                c = generateRandomColor();
+            }
+            return c;
+        }
+
         let leftCol = generateRandomColor();
         let rightCol = generateRandomColor();
 
@@ -97,9 +106,10 @@ window.addEventListener(
         updColors();
         
         setInterval(() => {
-            
-            leftCol = generateRandomColor();
-            rightCol = generateRandomColor();
+            // Clarity above 50%;
+
+            leftCol = generateLimitedColor(c => scoreColor(c)[1] > 0.5);
+            rightCol = generateLimitedColor(c => scoreColor(c)[1] > 0.5);
             updColors();
         }, 1000)
     }, "window load listener")
