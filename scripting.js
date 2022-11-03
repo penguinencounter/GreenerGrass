@@ -51,8 +51,8 @@ function filterClarity(target_min, target_max) {
     let maxG = Math.min(target_max * 4, 1) * 255;
     return {
         filter: "clarity",
-        minimumGreen: minG,
-        maximumGreen: maxG
+        min: minG,
+        max: maxG
     }
 }
 
@@ -71,6 +71,28 @@ function filterPurity(target_min, target_max) {
         min: target_min,
         max: target_max
     }
+}
+
+/**
+ * make a color
+ * @param {[{}]} filters 
+ */
+function generateFromFilters(filters) {
+    let minFactor = 0;
+    let maxFactor = 1;
+    let minG = 0;
+    let maxG = 255;
+    filters.forEach(filter => {
+        if (filter.filter == "clarity") {
+            minG = Math.max(minG, filter.min);
+            maxG = Math.min(maxG, filter.max);
+        } else if (filter.filter == "purity") {
+            minFactor = Math.max(minFactor, filter.min);
+            maxFactor = Math.min(maxFactor, filter.max);
+        } else {
+            throw "bad filter or no filter type";
+        }
+    });
 }
 
 window.addEventListener(
