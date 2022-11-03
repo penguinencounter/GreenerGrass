@@ -3,7 +3,7 @@ function wrapErrorAlert(fn, name) {
         try {
             fn(...args);
         } catch (e) {
-            return
+            // return
             alert(
                 `Error!\n${e}\ncalled with ${args}\n${
                     name == undefined ? "No specified name" : "Name: " + name
@@ -66,8 +66,14 @@ window.addEventListener(
 
         function generateLimitedColor(pred) {
             let c = generateRandomColor();
+            let n = 0
             while (!pred(c)) {
                 c = generateRandomColor();
+                n++;
+                if (n > 10000) {
+                    throw "Couldn't find a suitable color! Constraint code: " + pred.toString();
+                    return [0, 0, 0];
+                }
             }
             return c;
         }
