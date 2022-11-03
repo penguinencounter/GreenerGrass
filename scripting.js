@@ -15,7 +15,10 @@ window.addEventListener("load", () => {
         container.classList.remove("hover-right");
     });
 
-    function scoreColor(r, g, b) {
+    function scoreColor(rgb) {
+        let r = rgb[0];
+        let g = rgb[1];
+        let b = rgb[2];
         const purity = g / (r + g + b);
         const clarity = Math.min((g/255) * 2, 1);
         return purity * clarity;
@@ -27,4 +30,16 @@ window.addEventListener("load", () => {
         const b = Math.floor(Math.random() * 256);
         return [r, g, b];
     }
+    let leftCol = generateRandomColor();
+    let rightCol = generateRandomColor();
+
+    function generateColorString(rgb) {
+        let r = rgb[0];
+        let g = rgb[1];
+        let b = rgb[2];
+        return `rgb(${r}, ${g}, ${b})`
+    }
+
+    left.style.backgroundColor = generateColorString(leftCol);
+    right.style.backgroundColor = generateColorString(rightCol);
 })
