@@ -110,6 +110,8 @@ function generateFromFilters(filters) {
         }
     });
 
+    alert(`${minFactor}, ${maxFactor}, ${minG}, ${maxG}`)
+
     let g = randint(minG, maxG);
     let factorRoll = rand(minFactor, maxFactor);
     let spread = (1 - factorRoll) * g;
