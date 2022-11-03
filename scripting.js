@@ -110,13 +110,15 @@ function generateFromFilters(filters) {
         }
     });
 
-    alert(`${minFactor}, ${maxFactor}, ${minG}, ${maxG}`)
 
     let g = randint(minG, maxG);
     let factorRoll = rand(minFactor, maxFactor);
     let spread = (1 - factorRoll) * g;
     let r = randint(0, spread);
     let b = Math.ceil(spread - r);
+
+
+    alert(`${minFactor} - ${maxFactor} => ${factorRoll}, ${minG} - ${maxG} => ${g}; ${spread}`)
     return [r, g, b]
 }
 
