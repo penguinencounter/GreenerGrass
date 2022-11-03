@@ -41,6 +41,7 @@ const clarityFunction = c => Math.min(c[1] / 255 * 4, 1);
  * create a filter for clarity
  * @param {number} target_min the minimum, inclusive; 0
  * @param {number} target_max the maximum, inclusive; 1
+ * @returns {{}} object representing the calculated filter values
  */
 function filterClarity(target_min, target_max) {
     target_min = clamp(target_min, 0, 1);
@@ -52,6 +53,23 @@ function filterClarity(target_min, target_max) {
         filter: "clarity",
         minimumGreen: minG,
         maximumGreen: maxG
+    }
+}
+
+/**
+ * create a filter for purity
+ * @param {number} target_min minimum value
+ * @param {number} target_max maximum value
+ * @returns {{}} object representing the calculated filter value
+ */
+function filterPurity(target_min, target_max) {
+    target_min = clamp(target_min, 0, 1);
+    target_max = clamp(target_max, 0, 1);
+
+    return {
+        filter: "purity",
+        min: target_min,
+        max: target_max
     }
 }
 
