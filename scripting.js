@@ -71,7 +71,7 @@ window.addEventListener(
                 c = generateRandomColor();
                 n++;
                 if (n > 10000) {
-                    throw "Couldn't find a suitable color! Constraint code: " + pred.toString();
+                    alert("Couldn't find a suitable color! Constraint code: \n" + pred.toString() + "\nPlease report this!");
                     return [0, 0, 0];
                 }
             }
