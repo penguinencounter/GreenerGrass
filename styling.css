@@ -24,11 +24,11 @@ body {
         grid-template-columns: var(--unfocused-left) var(--unfocused-right);
         transition: grid-template-columns 0.5s;
     }
-    
+
     body.hover-left {
         grid-template-columns: var(--hovered) var(--unhovered);
     }
-    
+
     body.hover-right {
         grid-template-columns: var(--unhovered) var(--hovered);
     }
@@ -62,17 +62,44 @@ body {
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
     z-index: 1;
     background-color: #000;
     transition: box-shadow 0.5s, background-color 0.2s;
 }
 
-.side.left {
-    justify-content: flex-end;
+.side .scorecard {
+    background-color: #0008;
+    color: white;
+    width: max(20vmax, 4ch);
+    height: auto;
+    padding: 10px;
+    display: grid;
+    grid-template-areas: "col col" "pur cla" "sco sco";
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    font-size: 2em;
+    z-index: 3;
 }
-.side.right {
-    justify-content: flex-start;
+.scorecard > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.scorecard .score {
+    grid-area: sco;
+}
+.scorecard .purity {
+    grid-area: pur;
+    font-size: 0.5em;
+}
+.scorecard .clarity {
+    grid-area: cla;
+    font-size: 0.5em;
+}
+.scorecard .rgb {
+    grid-area: col;
 }
 
 .side:hover {
@@ -98,8 +125,8 @@ body {
     pointer-events: auto;
     border: none;
     background-color: #111;
-    width: 5vmax;
-    height: 5vmax;
+    width: 10vw;
+    height: 10vw;
     border-radius: 0 0 1000em 1000em;
     display: flex;
     justify-content: center;
@@ -112,8 +139,8 @@ body {
 }
 
 .pause-button-contain .pause-button:hover {
-    padding-top: 2vmax;
-    height: 7vmax;
+    padding-top: 2vw;
+    height: 12vw;
     box-shadow: 0 0 10px #000;
 }
 
