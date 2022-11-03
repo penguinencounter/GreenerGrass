@@ -228,8 +228,8 @@ window.addEventListener(
         setInterval(() => {
             // Clarity above 50%;
             let f = [
-                filterClarity(0, 0.9),
-                filterPurity(0.5, 1)
+                filterClarity(0, 0.1),
+                filterPurity(0.9, 1)
             ]
 
             leftCol = generateFromFilters(f);
