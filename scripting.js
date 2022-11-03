@@ -109,7 +109,7 @@ window.addEventListener(
             // Clarity above 50%;
             let f = c => {
                 let s = scoreColor(c)
-                return s[0] > 0.95;
+                return s[0] > 0.95 && s[2] < 1;
             }
 
             leftCol = generateLimitedColor(f);
