@@ -21,15 +21,37 @@ function wrapErrorAlert(fn, name) {
  * @returns {number} clamped
  */
 const clamp = (n, mi, ma) => n <= mi ? mi : n >= ma ? ma : n;
+
+/**
+ * Merges some objects
+ * @param {{}} a 
+ * @param {{}} b 
+ * @returns {{}} merged
+ */
+const merge = (a, b) => {
+    let r = {};
+    for (let ka of Object.keys(a)) r[ka] = a[ka];
+    for (let kb of Object.keys(b)) r[kb] = b[kb];
+    return r;
+}
 const clarityFunction = c => Math.max(c[1] * 4, 1);
 
 /**
  * create a filter for clarity
  * @param {number} target_min the minimum, inclusive; 0
- * @param {number} target_max the maximum, exclusive; >1
+ * @param {number} target_max the maximum, inclusive; 1
  */
 function filterClarity(target_min, target_max) {
-    let mininumG = target_min * 4
+    target_min = clamp(target_min, 0, 1);
+    target_max = clamp(target_max, 0, 1);
+    
+    let minG = Math.min(target_min * 4, 1) * 255;
+    let maxG = Math.min(target_max * 4, 1) * 255;
+    return {
+        filter: "clarity",
+        minimumGreen: minG,
+        maximumGreen: maxG
+    }
 }
 
 window.addEventListener(
