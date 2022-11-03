@@ -34,7 +34,8 @@ const merge = (a, b) => {
     for (let kb of Object.keys(b)) r[kb] = b[kb];
     return r;
 }
-const clarityFunction = c => Math.max(c[1] * 4, 1);
+
+const clarityFunction = c => Math.max(c[1] / 255 * 4, 1);
 
 /**
  * create a filter for clarity
