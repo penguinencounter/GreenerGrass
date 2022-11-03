@@ -13,6 +13,10 @@ function wrapErrorAlert(fn, name) {
     };
 }
 
+function filterClarity(target_min, target_max) {
+    
+}
+
 window.addEventListener(
     "load",
     wrapErrorAlert(() => {
@@ -120,7 +124,7 @@ window.addEventListener(
             // Clarity above 50%;
             let f = c => {
                 let s = scoreColor(c)
-                return s[0] > 0.90 && s[2] < 1;
+                return s[0] > 0.90;
             }
 
             leftCol = generateLimitedColor(f);
