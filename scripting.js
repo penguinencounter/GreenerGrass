@@ -35,7 +35,7 @@ const merge = (a, b) => {
     return r;
 }
 
-const clarityFunction = c => Math.max(c[1] / 255 * 4, 1);
+const clarityFunction = c => Math.min(c[1] / 255 * 4, 1);
 
 /**
  * create a filter for clarity
