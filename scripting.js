@@ -52,7 +52,12 @@ window.addEventListener(
             let r = rgb[0];
             let g = rgb[1];
             let b = rgb[2];
-            const purity = g / (r + g + b);
+            let purity;
+            if (r + g + b === 0) {
+                purity = 0;
+            } else {
+                purity = g / (r + g + b);
+            }
             const clarity = Math.min((g / 255) * 4, 1);
             return [purity * clarity, purity, clarity];
         }
