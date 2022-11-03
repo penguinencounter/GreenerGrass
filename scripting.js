@@ -13,8 +13,23 @@ function wrapErrorAlert(fn, name) {
     };
 }
 
+/**
+ * clamps a number
+ * @param {number} n number
+ * @param {number} mi 
+ * @param {number} ma 
+ * @returns {number} clamped
+ */
+const clamp = (n, mi, ma) => n <= mi ? mi : n >= ma ? ma : n;
+const clarityFunction = c => Math.max(c[1] * 4, 1);
+
+/**
+ * create a filter for clarity
+ * @param {number} target_min the minimum, inclusive; 0
+ * @param {number} target_max the maximum, exclusive; >1
+ */
 function filterClarity(target_min, target_max) {
-    
+    let mininumG = target_min * 4
 }
 
 window.addEventListener(
@@ -62,7 +77,7 @@ window.addEventListener(
             } else {
                 purity = g / (r + g + b);
             }
-            const clarity = Math.min((g / 255) * 4, 1);
+            const clarity = clarityFunction(rgb);
             return [purity * clarity, purity, clarity];
         }
 
