@@ -1,6 +1,8 @@
 # GreenerGrass
 > The grass is always greener on the other side
 
+Deployment status:
+[![Deploy static content to Pages](https://github.com/penguinencounter/GreenerGrass/actions/workflows/pages.yml/badge.svg)](https://github.com/penguinencounter/GreenerGrass/actions/workflows/pages.yml)
 ### a game about being able to tell between different shades of green
 meme submission for GameOff 2022
 
