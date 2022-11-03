@@ -118,7 +118,7 @@ function generateFromFilters(filters) {
     let b = Math.ceil(spread - r);
 
 
-    alert(`${minFactor} - ${maxFactor} => ${factorRoll}, ${minG} - ${maxG} => ${g}; ${spread}`)
+    // alert(`${minFactor} - ${maxFactor} => ${factorRoll}, ${minG} - ${maxG} => ${g}; ${spread}`)
     return [r, g, b]
 }
 
