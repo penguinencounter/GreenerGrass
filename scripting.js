@@ -50,7 +50,8 @@ window.addEventListener("load", wrapErrorAlert(() => {
         let b = rgb[2];
         return `rgb(${r}, ${g}, ${b})`
     }
-
+    alert(left);
+    alert(right)
     left.style.backgroundColor = generateColorString(leftCol);
     right.style.backgroundColor = generateColorString(rightCol);
 }))
