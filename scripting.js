@@ -14,6 +14,22 @@ function wrapErrorAlert(fn, name) {
 }
 
 /**
+ * Random integer
+ * @param {number} low lower bound (inclusive)
+ * @param {number} high upper bound (exclusive)
+ * @returns {number}
+ */
+const randint = (low, high) => Math.floor(Math.random() * (high - low)) + low;
+
+/**
+ * Random number
+ * @param {number} low lower bound (inclusive)
+ * @param {number} high upper bound (exclusive)
+ * @returns {number}
+ */
+ const rand = (low, high) => (Math.random() * (high - low)) + low;
+
+/**
  * clamps a number
  * @param {number} n number
  * @param {number} mi 
@@ -93,6 +109,13 @@ function generateFromFilters(filters) {
             throw "bad filter or no filter type";
         }
     });
+
+    let g = randint(minG, maxG);
+    let factorRoll = rand(minFactor, maxFactor);
+    let spread = (1 - factorRoll) * g;
+    let r = randint(0, spread);
+    let b = Math.ceil(spread - r);
+    return [r, g, b]
 }
 
 window.addEventListener(
@@ -200,13 +223,13 @@ window.addEventListener(
         
         setInterval(() => {
             // Clarity above 50%;
-            let f = c => {
-                let s = scoreColor(c)
-                return s[0] > 0.90;
-            }
+            let f = [
+                filterClarity(0, 0.999),
+                filterPurity(0.5, 1)
+            ]
 
-            leftCol = generateLimitedColor(f);
-            rightCol = generateLimitedColor(f);
+            leftCol = generateFromFilters(f);
+            rightCol = generateFromFilters(f);
             updColors();
         }, 1000)
     }, "window load listener")
