@@ -27,21 +27,21 @@ const randint = (low, high) => Math.floor(Math.random() * (high - low)) + low;
  * @param {number} high upper bound (exclusive)
  * @returns {number}
  */
- const rand = (low, high) => (Math.random() * (high - low)) + low;
+const rand = (low, high) => (Math.random() * (high - low)) + low;
 
 /**
  * clamps a number
  * @param {number} n number
- * @param {number} mi 
- * @param {number} ma 
+ * @param {number} mi
+ * @param {number} ma
  * @returns {number} clamped
  */
 const clamp = (n, mi, ma) => n <= mi ? mi : n >= ma ? ma : n;
 
 /**
  * Merges some objects
- * @param {{}} a 
- * @param {{}} b 
+ * @param {{}} a
+ * @param {{}} b
  * @returns {{}} merged
  */
 const merge = (a, b) => {
@@ -62,7 +62,7 @@ const clarityFunction = c => Math.min(c[1] / 255 * 4, 1);
 function filterClarity(target_min, target_max) {
     target_min = clamp(target_min, 0, 1);
     target_max = clamp(target_max, 0, 1);
-    
+
     let minG = Math.min(target_min / 4, 1) * 255;
     let maxG = Math.min(target_max / 4, 1) * 255;
     return {
@@ -91,7 +91,7 @@ function filterPurity(target_min, target_max) {
 
 /**
  * make a color
- * @param {[{}]} filters 
+ * @param {[{}]} filters
  */
 function generateFromFilters(filters) {
     let minFactor = 0;
@@ -99,10 +99,10 @@ function generateFromFilters(filters) {
     let minG = 0;
     let maxG = 255;
     filters.forEach(filter => {
-        if (filter.filter == "clarity") {
+        if (filter.filter === "clarity") {
             minG = Math.max(minG, filter.min);
             maxG = Math.min(maxG, filter.max);
-        } else if (filter.filter == "purity") {
+        } else if (filter.filter === "purity") {
             minFactor = Math.max(minFactor, filter.min);
             maxFactor = Math.min(maxFactor, filter.max);
         } else {
@@ -201,7 +201,7 @@ window.addEventListener(
             let b = rgb[2];
             return `rgb(${r}, ${g}, ${b})`;
         }
-        
+
         function updColors() {
             let sl = scoreColor(leftCol);
             let sr = scoreColor(rightCol)
@@ -215,21 +215,20 @@ window.addEventListener(
             rightO.red.innerHTML = rightCol[0];
             rightO.green.innerHTML = rightCol[1];
             rightO.blue.innerHTML = rightCol[2];
-            
+
             leftO.purity.innerHTML = Math.floor(sl[1] * 1000)/10 + "%";
             rightO.purity.innerHTML = Math.floor(sr[1] * 1000)/10 + "%";
-            
+
             leftO.clarity.innerHTML = Math.floor(sl[2] * 1000)/10 + "%";
             rightO.clarity.innerHTML = Math.floor(sr[2] * 1000)/10 + "%";
         }
 
         updColors();
-        
+
         setInterval(() => {
             // Clarity above 50%;
             let f = [
-                // filterClarity(0.9, 1),
-                // filterPurity(0.9, 1)
+                filterPurity(0.4, 5)
             ]
 
             leftCol = generateFromFilters(f);

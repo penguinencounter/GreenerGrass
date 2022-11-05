@@ -3,6 +3,8 @@
     --unfocused-right: 1fr;
     --hovered: 3fr;
     --unhovered: 2fr;
+
+    --main-menu-main-items: 3;
 }
 
 body {
@@ -15,7 +17,6 @@ body {
     top: 0;
     left: 0;
     background-color: #222;
-    font-family: 'Varela Round', sans-serif;
 }
 
 /* On landscape screens, have two panes horizontally */
@@ -149,4 +150,29 @@ body {
     width: 80%;
     height: 80%;
     filter: invert();
+}
+
+.h {
+    display: none;
+}
+.page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#menu {
+    background: linear-gradient(to right, #008800, #226600);
+    display: grid;
+    grid-template-rows: repeat(5, calc(1em + 20px));
+    gap: 10px;
+    justify-items: center;
+    justify-content: center;
+}
+
+#menu * {
+    padding: 10px;
+    background-color: #fff;
 }
