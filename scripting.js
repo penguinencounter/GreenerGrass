@@ -143,7 +143,7 @@ window.addEventListener(
             purity: right.querySelector(".purity"),
             clarity: right.querySelector(".clarity")
         };
-        const container = document.querySelector("body");
+        const container = document.querySelector("#game");
         left.addEventListener("mouseenter", () => {
             container.classList.add("hover-left");
         });

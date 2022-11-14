@@ -10,7 +10,6 @@
 body {
     padding: 0;
     margin: 0;
-    display: grid;
     height: 100%;
     position: fixed;
     width: 100%;
@@ -19,19 +18,23 @@ body {
     background-color: #222;
 }
 
+#game {
+    display: grid;
+}
+
 /* On landscape screens, have two panes horizontally */
 /* On portrait screens, have two panes vertically */
 @media (orientation: landscape) {
-    body {
+    #game {
         grid-template-columns: var(--unfocused-left) var(--unfocused-right);
         transition: grid-template-columns 0.5s;
     }
 
-    body.hover-left {
+    #game.hover-left {
         grid-template-columns: var(--hovered) var(--unhovered);
     }
 
-    body.hover-right {
+    #game.hover-right {
         grid-template-columns: var(--unhovered) var(--hovered);
     }
 
@@ -41,16 +44,16 @@ body {
 }
 
 @media (orientation: portrait) {
-    body {
+    #game {
         grid-template-rows: var(--unfocused-left) var(--unfocused-right);
         transition: grid-template-rows 0.5s;
     }
 
-    body.hover-left {
+    #game.hover-left {
         grid-template-rows: var(--hovered) var(--unhovered);
     }
 
-    body.hover-right {
+    #game.hover-right {
         grid-template-rows: var(--unhovered) var(--hovered);
     }
 
@@ -153,7 +156,7 @@ body {
 }
 
 .h {
-    display: none;
+    display: none !important;
 }
 .page {
     position: fixed;
